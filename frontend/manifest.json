@@ -1,0 +1,29 @@
+{
+    "manifest_version": 3,
+    "name": "Study Companion",
+    "version": "1.0",
+    "description": "AI explainer using Gemini that helps students understand content.",
+    "permissions": [
+      "contextMenus",
+      "activeTab",
+      "scripting",
+      "storage"
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": "icons/ai.png"
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ],
+    "icons": {
+      "128": "icons/ai.png"
+    }
+  }
+  
