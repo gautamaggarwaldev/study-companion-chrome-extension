@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Study Companion</h2>
+  <p id="selected-text">Selected text will appear here...</p>
+
+  <select id="mode">
+    <option value="explain">Explain</option>
+    <option value="simplify">Simplify</option>
+    <option value="meme">Meme-style</option>
+  </select>
+
+  <button id="ask-btn">Ask Gemini</button>
+
+  <div id="loader" class="hidden"></div>
+
+  <pre id="response"></pre>
+
+  <button id="copy-btn" class="hidden">Copy</button>
+  <button id="speak-btn" class="hidden">Speak</button>
+
+  <script src="popup.js"></script>
+</body>
+</html>
