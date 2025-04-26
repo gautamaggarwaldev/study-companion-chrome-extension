@@ -1,5 +1,8 @@
+// Load Lottie animation
+
+
 document.addEventListener("DOMContentLoaded", () => {
-    const selectedTextElement = document.getElementById("selected-text");
+  const selectedTextElement = document.getElementById("selected-text");
     const responseElement = document.getElementById("response");
     const askBtn = document.getElementById("ask-btn");
     const copyBtn = document.getElementById("copy-btn");
@@ -13,12 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   
     askBtn.addEventListener("click", async () => {
+      loader.style.display = 'block';
       chrome.storage.local.get("selectedText", async ({ selectedText }) => {
         if (!selectedText) {
           responseElement.textContent = "Please highlight text on a page first.";
           return;
         }
-  
         const mode = modeSelector.value;
         const prompt = buildPrompt(selectedText, mode);
   
@@ -46,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
           console.error("Error:", error);
           responseElement.textContent = "Error connecting to AI.";
         } finally {
-          loader.classList.add("hidden");
+          loader.style.display = 'none';
         }
       });
     });
@@ -55,12 +58,14 @@ document.addEventListener("DOMContentLoaded", () => {
       navigator.clipboard.writeText(responseElement.textContent).then(() => {
         copyBtn.textContent = "Copied!";
         setTimeout(() => (copyBtn.textContent = "Copy"), 1500);
+        
       });
     });
   
     speakBtn.addEventListener("click", () => {
       const text = responseElement.textContent;
       const utterance = new SpeechSynthesisUtterance(text);
+      speechSynthesis.cancel(); // Cancel any ongoing speech
       speechSynthesis.speak(utterance);
     });
   

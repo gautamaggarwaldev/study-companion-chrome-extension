@@ -34,7 +34,10 @@ app.post("/gemini", async (req, res) => {
       }
     );
 
-    const reply = response.data.candidates?.[0]?.content?.parts?.[0]?.text || "No response generated.";
+    let reply = response.data.candidates?.[0]?.content?.parts?.[0]?.text || "No response generated.";
+
+    reply = reply.replace(/[^a-zA-Z0-9\s]/g, "");
+    
     res.json({ response: reply });
 
   } catch (error) {
@@ -44,5 +47,5 @@ app.post("/gemini", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on ${PORT}...`);
 });

@@ -1,57 +1,128 @@
-body {
-    font-family: sans-serif;
-    padding: 1rem;
-    width: auto;
-  }
-  
-  #selected-text {
-    background: #f0f0f0;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  button {
-    padding: 0.5rem 1rem;
-    background: #4caf50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin-top: 0.5rem;
-  }
+/* Reset */
+body, h2, p, button, select, pre {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 
-  .hidden {
-    display: none;
-  }
-  
-  #loader {
-    margin: 1rem 0;
-    width: 30px;
-    height: 30px;
-    border: 4px solid #ccc;
-    border-top: 4px solid #4caf50;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  button {
-    margin-top: 0.5rem;
-    padding: 0.5rem 1rem;
-    background: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  
+/* Body Styling */
+body {
+  width: 350px;
+  min-height: 480px;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+}
+
+/* Heading */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  background: linear-gradient(90deg, #00dbde, #fc00ff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Selected Text */
+#selected-text {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  overflow-wrap: break-word;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+/* Mode Dropdown */
+#mode {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.8);
+  color: #0c05e8fd;
+  font-weight: bold;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+}
+
+/* Loader (Robot Thinking) */
+#loader {
+  margin: 20px auto;
+  width: 60px;
+  height: 60px;
+  position: relative;
+  display: none;
+}
+
+#loader::before,
+#loader::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 5px solid #00dbde;
+  border-top: 5px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+#loader::after {
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  border-color: #fc00ff transparent;
+  animation-duration: 1.5s;
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Response */
+#response {
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  min-height: 100px;
+  overflow-y: auto;
+}
+
+/* Copy and Speak Buttons */
+#copy-btn, #speak-btn {
+  width: 48%;
+  display: inline-block;
+}
+
+.hidden {
+  display: none;
+}
